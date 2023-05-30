@@ -1,0 +1,487 @@
+ @prefix CSIte: <http://www.owl-ontologies.com/Csite#> .
+@prefix bfo: <http://www.owl-ontologies.com/bfo#> .
+@prefix bot: <http://www.owl-ontologies.com/bot#> .
+@prefix building: <http://www.owl-ontologies.com/building#> .
+@prefix cSite: <http://www.owl-ontologies.com/cSite#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dice: <http://www.owl-ontologies.com/dice#> .
+@prefix dici: <http://www.owl-ontologies.com/dici#> .
+@prefix event: <http://www.owl-ontologies.com/event#> .
+@prefix foaf: <http://www.owl-ontologies.com/foaf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.owl-ontologies.com/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.owl-ontologies.com/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+CSIte: a owl:Ontology ;
+    dc:creator "Karim Farghaly" ;
+    dc:description "Ontology code created by Chowlk" ;
+    dc:title "CSite" ;
+    owl:versionInfo "1.22.1" .
+
+bfo:Equipement a owl:Class ;
+    rdfs:label "Equipement" ;
+    rdfs:subClassOf bfo:Object .
+
+bfo:MaterialBatch a owl:Class ;
+    rdfs:label "Material Batch" ;
+    rdfs:subClassOf bfo:Object .
+
+bot:Site a owl:Class ;
+    rdfs:label "Site" ;
+    rdfs:subClassOf bot:Zone .
+
+bot:adjacentZone a owl:ObjectProperty ;
+    rdfs:label "adjacent zone" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range bot:Zone .
+
+bot:containsZone a owl:ObjectProperty ;
+    rdfs:label "contains zone" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range bot:Zone .
+
+bot:hasBuilding a owl:ObjectProperty ;
+    rdfs:label "has building" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range bot:Building .
+
+bot:hasElement a owl:ObjectProperty ;
+    rdfs:label "has element" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range bot:Element .
+
+bot:hasSpace a owl:ObjectProperty ;
+    rdfs:label "has space" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range bot:Space .
+
+bot:hasStorey a owl:ObjectProperty ;
+    rdfs:label "has storey" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range bot:Storey .
+
+bot:hasSub-element a owl:ObjectProperty ;
+    rdfs:label "has sub-element" ;
+    rdfs:domain bot:Element ;
+    rdfs:range bot:Element .
+
+bot:intersectsZone a owl:ObjectProperty ;
+    rdfs:label "intersects zone" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range bot:Zone .
+
+building:ifcIdenitifier a owl:DatatypeProperty ;
+    rdfs:label "ifc idenitifier" ;
+    rdfs:domain bot:Space ;
+    rdfs:range xsd:string .
+
+cSite:AttendanceDay a owl:DatatypeProperty ;
+    rdfs:label "attendance day" ;
+    rdfs:domain prov:Person ;
+    rdfs:range xsd:dateTime .
+
+cSite:AttendanceDuration a owl:DatatypeProperty ;
+    rdfs:label "attendance duration" ;
+    rdfs:domain prov:Person ;
+    rdfs:range xsd:decimal .
+
+cSite:AuthorityToProceed a owl:Class ;
+    rdfs:label "Authority To Proceed" ;
+    rdfs:subClassOf cSite:QualityActivity .
+
+cSite:ConstructionSubmittal a owl:Class ;
+    rdfs:label "Construction Submittal" ;
+    rdfs:subClassOf cSite:ProductionSubmittal .
+
+cSite:ConstuctiionActivity a owl:Class ;
+    rdfs:label "Constuctiion Activity" ;
+    rdfs:subClassOf dice:Activity .
+
+cSite:Contractor a owl:Class ;
+    rdfs:label "Contractor" ;
+    rdfs:subClassOf prov:Organization .
+
+cSite:CoversFrom a owl:DatatypeProperty ;
+    rdfs:label "covers from" ;
+    rdfs:domain dici:WeekPlan ;
+    rdfs:range xsd:date .
+
+cSite:CoversTo a owl:DatatypeProperty ;
+    rdfs:label "covers to" ;
+    rdfs:domain dici:WeekPlan ;
+    rdfs:range xsd:date .
+
+cSite:DeliversWP a owl:ObjectProperty ;
+    rdfs:label "delivers w p" ;
+    rdfs:domain prov:Agent ;
+    rdfs:range cSite:Workpackage .
+
+cSite:Designer a owl:Class ;
+    rdfs:label "Designer" ;
+    rdfs:subClassOf prov:Organization .
+
+cSite:ElementMesh a owl:DatatypeProperty ;
+    rdfs:label "element mesh" ;
+    rdfs:domain bot:Space .
+
+cSite:EngineeringActivity a owl:Class ;
+    rdfs:label "Engineering Activity" ;
+    rdfs:subClassOf dice:Activity .
+
+cSite:HaulageComapny a owl:Class ;
+    rdfs:label "Haulage Comapny" ;
+    rdfs:subClassOf prov:Organization .
+
+cSite:Owner a owl:Class ;
+    rdfs:label "Owner" ;
+    rdfs:subClassOf prov:Organization .
+
+cSite:PlannedVersion a owl:DatatypeProperty ;
+    rdfs:label "planned version" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:string .
+
+cSite:PostconstructionSubmittal a owl:Class ;
+    rdfs:label "Postconstruction Submittal" ;
+    rdfs:subClassOf cSite:ProductionSubmittal .
+
+cSite:PreconstructionSubmittal a owl:Class ;
+    rdfs:label "Preconstruction Submittal" ;
+    rdfs:subClassOf cSite:ProductionSubmittal .
+
+cSite:ProcurementActivity a owl:Class ;
+    rdfs:label "Procurement Activity" ;
+    rdfs:subClassOf dice:Activity .
+
+cSite:QualityHoldPoint a owl:Class ;
+    rdfs:label "Quality Hold Point" ;
+    rdfs:subClassOf cSite:QualityActivity .
+
+cSite:QualitySignOff a owl:Class ;
+    rdfs:label "Quality Sign Off" ;
+    rdfs:subClassOf cSite:QualityActivity .
+
+cSite:ReasonForDelay a owl:DatatypeProperty ;
+    rdfs:label "reason for delay" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:duration .
+
+cSite:RelateToActivity a owl:ObjectProperty ;
+    rdfs:label "relate to activity" ;
+    rdfs:domain cSite:ProductionSubmittal ;
+    rdfs:range dice:Activity .
+
+cSite:RevitId a owl:DatatypeProperty ;
+    rdfs:label "revit id" ;
+    rdfs:domain bot:Space ;
+    rdfs:range xsd:string .
+
+cSite:StatusCompleted a owl:DatatypeProperty ;
+    rdfs:label "status completed" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:string .
+
+cSite:WorksAtProject a owl:ObjectProperty ;
+    rdfs:label "works at project" ;
+    rdfs:domain prov:Agent ;
+    rdfs:range cSite:Project .
+
+cSite:discussedIn a owl:ObjectProperty ;
+    rdfs:label "discussed in" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range dici:Plan .
+
+cSite:hasActualEnd a owl:DatatypeProperty ;
+    rdfs:label "has actual end" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:date .
+
+cSite:hasActualStart a owl:DatatypeProperty ;
+    rdfs:label "has actual start" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:date .
+
+cSite:hasDescription a owl:DatatypeProperty ;
+    rdfs:label "has description" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:string .
+
+cSite:hasFormat a owl:ObjectProperty ;
+    rdfs:label "has format" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range cSite:FileFormat .
+
+cSite:hasMilestone a owl:ObjectProperty ;
+    rdfs:label "has milestone" ;
+    rdfs:domain dice:Activity,
+        dici:InformationContentEntity ;
+    rdfs:range cSite:Milestone .
+
+cSite:hasModifiedDate a owl:DatatypeProperty ;
+    rdfs:label "has modified date" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range xsd:date .
+
+cSite:hasObject a owl:ObjectProperty ;
+    rdfs:label "has object" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range bfo:Object .
+
+cSite:hasOrganization a owl:ObjectProperty ;
+    rdfs:label "has organization" ;
+    rdfs:domain dice:Activity,
+        dici:InformationContentEntity ;
+    rdfs:range prov:Organization .
+
+cSite:hasPerson a owl:ObjectProperty ;
+    rdfs:label "has person" ;
+    rdfs:domain dice:Activity,
+        dici:InformationContentEntity ;
+    rdfs:range prov:Person .
+
+cSite:hasPlannedEnd a owl:DatatypeProperty ;
+    rdfs:label "has planned end" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:date .
+
+cSite:hasPlannedStart a owl:DatatypeProperty ;
+    rdfs:label "has planned start" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range xsd:date .
+
+cSite:hasProject a owl:ObjectProperty ;
+    rdfs:label "has project" ;
+    rdfs:domain bot:Zone ;
+    rdfs:range cSite:Project .
+
+cSite:hasRevision a owl:DatatypeProperty ;
+    rdfs:label "has revision" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range xsd:string .
+
+cSite:hasSpaceNumber a owl:DatatypeProperty ;
+    rdfs:label "has space number" ;
+    rdfs:domain bot:Space ;
+    rdfs:range xsd:string .
+
+cSite:hasSpaceType a owl:ObjectProperty ;
+    rdfs:label "has space type" ;
+    rdfs:domain bot:Space ;
+    rdfs:range cSite:SpaceType .
+
+cSite:hasStatus a owl:DatatypeProperty ;
+    rdfs:label "has status" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range xsd:string .
+
+cSite:hasSubmissionDate a owl:DatatypeProperty ;
+    rdfs:label "has submission date" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range xsd:date .
+
+cSite:hasSubmittalDiscpline a owl:ObjectProperty ;
+    rdfs:label "has submittal discpline" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range cSite:SubmittalDiscpline .
+
+cSite:hasSubmittalType a owl:ObjectProperty ;
+    rdfs:label "has submittal type" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range cSite:SubmittalType .
+
+cSite:hasSubmittalWorkflow a owl:ObjectProperty ;
+    rdfs:label "has submittal workflow" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range cSite:SubmittalWorkflow .
+
+cSite:hasSubmittedDate a owl:DatatypeProperty ;
+    rdfs:label "has submitted date" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range xsd:date .
+
+cSite:hasVersion a owl:DatatypeProperty ;
+    rdfs:label "has version" ;
+    rdfs:domain dici:InformationContentEntity ;
+    rdfs:range xsd:string .
+
+cSite:hasWorkPackage a owl:ObjectProperty ;
+    rdfs:label "has work package" ;
+    rdfs:domain dice:Activity,
+        dici:InformationContentEntity ;
+    rdfs:range cSite:Workpackage .
+
+cSite:hasZone a owl:ObjectProperty ;
+    rdfs:label "has zone" ;
+    rdfs:domain cSite:ProductionSubmittal,
+        dice:Activity ;
+    rdfs:range bot:Zone .
+
+cSite:responsibleForNonCompletion a owl:ObjectProperty ;
+    rdfs:label "responsible for non completion" ;
+    rdfs:domain dice:Activity ;
+    rdfs:range prov:Organization .
+
+dice:hasRole a owl:ObjectProperty ;
+    rdfs:label "has role" ;
+    rdfs:domain prov:Agent ;
+    rdfs:range bfo:Role .
+
+event:hasSub_event a owl:ObjectProperty ;
+    rdfs:label "has sub_event" ;
+    rdfs:domain event:Event ;
+    rdfs:range event:Event .
+
+foaf:firstName a owl:DatatypeProperty ;
+    rdfs:label "first name" ;
+    rdfs:domain prov:Person ;
+    rdfs:range xsd:string .
+
+foaf:lastName a owl:DatatypeProperty ;
+    rdfs:label "last name" ;
+    rdfs:domain prov:Person ;
+    rdfs:range xsd:string .
+
+prov:actedOnBehalfOf a owl:ObjectProperty ;
+    rdfs:label "acted on behalf of" ;
+    rdfs:domain prov:Person ;
+    rdfs:range prov:Organization .
+
+time:after a owl:ObjectProperty ;
+    rdfs:label "after" ;
+    rdfs:domain event:Event ;
+    rdfs:range event:Event .
+
+time:before a owl:ObjectProperty ;
+    rdfs:label "before" ;
+    rdfs:domain event:Event ;
+    rdfs:range event:Event .
+
+bfo:Role a owl:Class ;
+    rdfs:label "Role" ;
+    rdfs:subClassOf cSite:OtherCollection .
+
+bot:Building a owl:Class ;
+    rdfs:label "Building" ;
+    rdfs:subClassOf bot:Zone .
+
+bot:Storey a owl:Class ;
+    rdfs:label "Storey" ;
+    rdfs:subClassOf bot:Zone .
+
+cSite:FileFormat a owl:Class ;
+    rdfs:label "File Format" ;
+    rdfs:subClassOf cSite:SubmittalCollection .
+
+cSite:Milestone a owl:Class ;
+    rdfs:label "Milestone" ;
+    rdfs:subClassOf cSite:OtherCollection .
+
+cSite:SpaceType a owl:Class ;
+    rdfs:label "Space Type" ;
+    rdfs:subClassOf cSite:OtherCollection .
+
+cSite:SubmittalDiscpline a owl:Class ;
+    rdfs:label "Submittal Discpline" ;
+    rdfs:subClassOf cSite:SubmittalCollection .
+
+cSite:SubmittalType a owl:Class ;
+    rdfs:label "Submittal Type" ;
+    rdfs:subClassOf cSite:SubmittalCollection .
+
+cSite:SubmittalWorkflow a owl:Class ;
+    rdfs:label "Submittal Workflow" ;
+    rdfs:subClassOf cSite:SubmittalCollection .
+
+dice:BuildingObject a owl:Class ;
+    rdfs:label "Building Object" ;
+    rdfs:subClassOf bfo:Object .
+
+dice:Location a owl:Class ;
+    rdfs:label "Location" .
+
+dici:InformationContainer a owl:Class ;
+    rdfs:label "Information Container" ;
+    rdfs:subClassOf dici:InformationContentEntity .
+
+cSite:Collection a owl:Class ;
+    rdfs:label "Collection" .
+
+cSite:Project a owl:Class ;
+    rdfs:label "Project" ;
+    rdfs:subClassOf cSite:OtherCollection .
+
+cSite:Resource a owl:Class ;
+    rdfs:label "Resource" .
+
+cSite:Workpackage a owl:Class ;
+    rdfs:label "Workpackage" ;
+    rdfs:subClassOf cSite:OtherCollection .
+
+dici:Dataset a owl:Class ;
+    rdfs:label "Dataset" ;
+    rdfs:subClassOf dici:InformationContainer .
+
+dici:Plan a owl:Class ;
+    rdfs:label "Plan" ;
+    rdfs:subClassOf dici:Dataset .
+
+dici:WeekPlan a owl:Class ;
+    rdfs:label "Week Plan" ;
+    rdfs:subClassOf dici:Plan .
+
+bot:Element a owl:Class ;
+    rdfs:label "Element" ;
+    rdfs:subClassOf dice:BuildingObject .
+
+cSite:QualityActivity a owl:Class ;
+    rdfs:label "Quality Activity" ;
+    rdfs:subClassOf dice:Activity .
+
+bfo:Object a owl:Class ;
+    rdfs:label "Object" ;
+    rdfs:subClassOf cSite:Resource .
+
+cSite:SubmittalCollection a owl:Class ;
+    rdfs:label "Submittal Collection" ;
+    rdfs:subClassOf cSite:Collection .
+
+cSite:OtherCollection a owl:Class ;
+    rdfs:label "Other Collection" ;
+    rdfs:subClassOf cSite:Collection .
+
+cSite:ProductionSubmittal a owl:Class ;
+    rdfs:label "Production Submittal" ;
+    rdfs:subClassOf dici:Dataset .
+
+prov:Agent a owl:Class ;
+    rdfs:label "Agent" ;
+    rdfs:subClassOf cSite:Resource .
+
+bot:Space a owl:Class ;
+    rdfs:label "Space" ;
+    rdfs:subClassOf bot:Zone .
+
+prov:Person a owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf prov:Agent .
+
+event:Event a owl:Class ;
+    rdfs:label "Event" .
+
+prov:Organization a owl:Class ;
+    rdfs:label "Organization" ;
+    rdfs:subClassOf prov:Agent .
+
+dici:InformationContentEntity a owl:Class ;
+    rdfs:label "Information Content Entity" .
+
+bot:Zone a owl:Class ;
+    rdfs:label "Zone" ;
+    rdfs:subClassOf dice:Location .
+
+dice:Activity a owl:Class ;
+    rdfs:label "Activity" ;
+    rdfs:subClassOf event:Event .
+
